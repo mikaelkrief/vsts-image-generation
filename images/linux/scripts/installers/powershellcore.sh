@@ -19,7 +19,7 @@ if ! command -v pwsh; then
     echo "pwsh was not installed"
     exit 1
 fi
-if ! pwsh -c ''; then
+if ! pwsh -c '$PSVersionTable.PSVersion'; then
     echo "pwsh failed to run"
     exit 1
 fi
