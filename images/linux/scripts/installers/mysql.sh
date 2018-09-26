@@ -35,8 +35,13 @@ if ! command -v mysql; then
     exit 1
 fi
 
+set -e
+mysql -vvv -e 'CREATE DATABASE smoke_test' -uroot -proot
+mysql -vvv -e 'DROP DATABASE smoke_test' -uroot -proot
+set +e
+
 # Document what was added to the image
 echo "Lastly, documenting what we added to the metadata file"
 DocumentInstalledItem "MySQL ($(mysql --version))"
-DocumentInstalledItem "MySQL Server"
+DocumentInstalledItem "MySQL Server (user:root password:root)"
 DocumentInstalledItem "MS SQL Server Client Tools"
